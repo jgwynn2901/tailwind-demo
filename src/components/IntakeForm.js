@@ -1,57 +1,62 @@
 import React from "react";
+import TextElement from './TextElement';
+import SelectElement from './SelectElement';
 
 function IntakeForm() {
+  const firstName = { label: 'First Name', style: '', placeholder: 'First Name'};
+  const lastName = { label: 'Last Name', style: '', placeholder: 'Last Name'};
+  const reportingMethod = { label: 'Reporting Method', 
+    "options" :[{ name: "F - Fax", value: "Fax"},
+    { name: "P - Phone", value: "Phone"},
+    { name: "E - Email", value: "Email"},
+    { name: "I - Internet", value: "Internet"}]};
+  //const incidentDate = { label: 'Date Of Incident', style: '', placeholder: 'Date Of Incident'};
+  //const incidentTime = { label: 'Time Of Incident', style: '', placeholder: 'Time Of Incident'};
+  const reporterType = { label: 'Reporter Type', 
+    "options" :[
+      { name: "EMP", value: "Employee"},
+      { name: "EMR", value: "Employer"},
+      { name: "OTH", value: "Other"}]};
+
   return (
-    <div>
-      <div className="col-md-12 text-black">
-        <h1 className="text-xl text-blue-700 leading-tight">Auto Liability</h1>
+    <div className="flex-col items-center px-12">
+      <div className="mt-6">
+        <h1 className="text-xl text-blue-700 text-center leading-tight">Auto Liability</h1>
       </div>
-      <div className="" tabindex="-1" id="CALLER_INFORMATION">
-        <div className="col-md-12">
+      <div>
+        <div className="text-lg text-gray-800 text-center mt-4 mb-2">
           <h2>
             <span>Reporter Information</span>
           </h2>
         </div>
       </div>
       <div className="row">
-	      <div className="text-sm">
+        <div className="text-sm py-4">
           <div>
-		        <span aria-label="Reporting Method">Reporting Method</span>
-		        <i className="fa fa-asterisk secondary-blue" aria-hidden="true" data-original-title="Answer required"/>
+            <SelectElement element={reportingMethod} />
           </div>
           <div>
-            <select  >
-              <option value=""/>
-              <option value="F - Fax">Fax</option>
-              <option value="P - Phone">Phone</option>
-              <option value="E - Email">Email</option>
-              <option value="I - Internet">Internet</option>
-		        </select>
+            <span aria-label="Date Of Incident">Date Of Incident</span>
           </div>
           <div>
-            <span  aria-label="Date Of Incident">Date Of Incident</span>
-          </div>
-          <div>
-            <input type="date" class="form-control"  inputmode="numeric" />
+            <input type="date" className="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
           </div>
           <div>
             <span aria-label="Time Of Incident">Time Of Incident</span>
           </div>
           <div>
-            <input type="time" class="form-control" inputmode="text" />
+            <input type="time" className="mt-1 block w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0" />
           </div>
           <div>
-            <span aria-label="Reporter Type">Reporter Type</span>
+            <SelectElement element={reporterType} />
           </div>
           <div>
-            <select searchable="Search">
-              <option value=""/>
-              <option value="EMP">Employee</option>
-              <option value="EMR">Employer</option>
-              <option value="OTH">Other</option>
-            </select>
+            <TextElement element={firstName} />
           </div>
-	      </div>
+          <div>
+            <TextElement element={lastName} />
+          </div>
+        </div>
       </div>
     </div>
   );
